@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300599231043",
+    "project_id": "dhankuber-app",
+    "storage_bucket": "dhankuber-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300599231043:android:69c6071d76a20c21ec0af6",
+        "android_client_info": {
+          "package_name": "com.example.dhankuber"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP6mfYjpEwOwAFsCfVBTdWo49SoF_R3o4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
