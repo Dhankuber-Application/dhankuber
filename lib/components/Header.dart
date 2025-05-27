@@ -6,6 +6,7 @@ class Header extends StatefulWidget {
   final int initialUnreadNotifications;
   final VoidCallback? onNotificationPressed;
   final VoidCallback? onProfilePressed;
+  final VoidCallback? onLanguagePressed;
   final bool showLogo;
   final bool showNotifications;
   final bool showProfile;
@@ -15,6 +16,7 @@ class Header extends StatefulWidget {
     this.initialUnreadNotifications = 0,
     this.onNotificationPressed,
     this.onProfilePressed,
+    this.onLanguagePressed,
     this.showLogo = true,
     this.showNotifications = true,
     this.showProfile = true,
@@ -26,7 +28,7 @@ class Header extends StatefulWidget {
 
 class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late int _unreadNotifications; // Now managed in state
+  late int _unreadNotifications;
 
   @override
   void initState() {
@@ -48,7 +50,6 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
     setState(() {
       _unreadNotifications = 0;
     });
-    // Call the external callback if provided
     widget.onNotificationPressed?.call();
   }
 
@@ -81,6 +82,13 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
                 if (!widget.showLogo) const Spacer(),
                 Row(
                   children: [
+                    IconButton(
+                      icon: const Icon(FontAwesomeIcons.language),
+                      onPressed: () {
+                        _showLanguageDialog(context);
+                        widget.onLanguagePressed?.call();
+                      },
+                    ),
                     if (widget.showNotifications)
                       Stack(
                         children: [
@@ -114,6 +122,7 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
                             ),
                         ],
                       ),
+
                     if (widget.showProfile)
                       GestureDetector(
                         onTap: widget.onProfilePressed,
@@ -141,3 +150,52 @@ class _HeaderState extends State<Header> with SingleTickerProviderStateMixin {
     );
   }
 }
+
+final List<Map<String, String>> _languages = [
+  {'code': 'hi', 'name': 'Hindi', 'native': 'हिन्दी'},
+  {'code': 'bn', 'name': 'Bengali', 'native': 'বাংলা'},
+  {'code': 'te', 'name': 'Telugu', 'native': 'తెలుగు'},
+  {'code': 'mr', 'name': 'Marathi', 'native': 'मराठी'},
+  {'code': 'ta', 'name': 'Tamil', 'native': 'தமிழ்'},
+  {'code': 'ur', 'name': 'Urdu', 'native': 'اردو'},
+  {'code': 'gu', 'name': 'Gujarati', 'native': 'ગુજરાતી'},
+  {'code': 'kn', 'name': 'Kannada', 'native': 'ಕನ್ನಡ'},
+  {'code': 'ml', 'name': 'Malayalam', 'native': 'മലയാളം'},
+  {'code': 'or', 'name': 'Odia', 'native': 'ଓଡ଼ିଆ'},
+  {'code': 'pa', 'name': 'Punjabi', 'native': 'ਪੰਜਾਬੀ'},
+  {'code': 'as', 'name': 'Assamese', 'native': 'অসমীয়া'},
+];
+
+void _showLanguageDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+    return SimpleDialog(
+        title: const Text('Choose Language'),
+        children: _languages.map((language) {
+      return SimpleDialogOption(
+          onPressed: () {
+            Navigator.pop(context);
+            // Handle language selection here
+            print('Selected: ${language['code']}');
+          },
+          child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              children: [
+                Text(language['name']!),
+                const SizedBox(width: 12),
+                Text(
+                  language['native']!,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+      );
+        }).toList(),
+    );
+      },
+  );
+}
+

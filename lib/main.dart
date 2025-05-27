@@ -1,8 +1,10 @@
 import 'package:dhankuber/components/Header.dart';
 import 'package:dhankuber/components/footer_navbar.dart';
+import 'package:dhankuber/pages/FDsPage.dart';
 import 'package:dhankuber/pages/InvestPage.dart';
 import 'package:dhankuber/pages/HomePage.dart';
 import 'package:dhankuber/pages/portfolio_page.dart';
+import 'package:dhankuber/pages/profilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:dhankuber/pages/authentication/welcome_screen.dart';
 import 'package:dhankuber/pages/ConfirmationPage.dart';
@@ -115,9 +117,9 @@ class _MainAppWrapperState extends State<MainAppWrapper> {
       case 'portfolio':
         return const PortfolioPage();
       case 'fds':
-        return Container(child: const Center(child: Text('FDs Page')));
+        return FDPage();
       case 'profile':
-        return Container(child: const Center(child: Text('Profile Page')));
+        return ProfilePage();
       default:
         return const HomePage();
     }
