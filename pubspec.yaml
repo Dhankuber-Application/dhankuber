@@ -2,7 +2,7 @@ name: dhankuber
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -40,15 +40,21 @@ dependencies:
   flutter_riverpod: ^2.6.1
   google_fonts: ^4.0.4
   riverpod_annotation: ^2.6.1
-  intl: ^0.20.2
+  intl:
   firebase_auth: ^5.5.4
   cloud_firestore: ^5.6.8
   animated_text_kit: ^4.2.3
+  syncfusion_flutter_charts:
+  gradient_borders:
+  font_awesome_flutter:
+  flutter_svg:
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  font_awesome_flutter: ^10.5.0
+  google_fonts: ^4.0.4
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -62,7 +68,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
